@@ -11,7 +11,7 @@ from influxdb_client.client.write_api import SYNCHRONOUS
 def generate_weather_data():
     # hint taken from https://www.makeuseof.com/python-live-weather-data/
     try:
-        with open('../influxdb-config.json') as config_file:
+        with open('../key-configurations/influxdb-config.json') as config_file:
             data = json.load(config_file)
             city_name = data['location'] + " weather"
         headers = {
@@ -41,7 +41,7 @@ def generate_weather_data():
 # source - https://docs.influxdata.com/influxdb/cloud/api-guide/client-libraries/python/
 def write_weather_info_to_database(location, temperature, humidity):
     measurement = "weather"
-    with open('../influxdb-config.json') as config_file:
+    with open('../key-configurations/influxdb-config.json') as config_file:
         data = json.load(config_file)
         bucket = data['bucket']
         org = data['org']
