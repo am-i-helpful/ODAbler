@@ -1,0 +1,7 @@
+{
+  "opendc-host-server": "127.0.0.1",
+  "opendc-host-port": 10000,
+  "energy-experiment-analysis-signal": "ENERGY",
+  "anomaly-experiment-analysis-signal": "ANOMALY",
+  "connection-termination-signal": "TERMINATE"
+}
