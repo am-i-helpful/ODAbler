@@ -6,29 +6,6 @@ import sys
 from nbconvert.preprocessors import ExecutePreprocessor
 import opendc_experiment_analyser.node_performance_anomaly_analyser
 
-def run_anomaly_analysis_experiment():
-    print("-----------------Running the performance anomaly experiment-----------------")
-    with open('../../key-configurations/opendc-experiment-config.json') as config_file:
-        data = json.load(config_file)
-        host = data['opendc-host-server']
-        port = data['opendc-host-port']
-        anomaly_message = data['anomaly-experiment-analysis-signal']
-        terminate_message = data['connection-termination-signal']
-    try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.connect((host, port))
-            s.settimeout(10) # timeout - 10 seconds
-            print("Connection succeeded!")
-            print(anomaly_message)
-            s.sendall(bytes(terminate_message+'\n', 'utf-8'))
-            data = s.recv(1024)
-            print(f"Received reply to anomaly-experiment-related message = {data!r}")
-
-    except Exception as e:
-        print(traceback.format_exc())
-    finally:
-        print("ODAbler Analysis Program halted!!!")
-
 
 def analyse_anomaly_analysis_experiment():
     # running python notebook from python script - https://stackoverflow.com/a/68720825/3482140,
@@ -44,4 +21,4 @@ def analyse_anomaly_analysis_experiment():
         nbformat.write(nb_in, f)
 
 if __name__ == '__main__':
-    run_anomaly_analysis_experiment()
+    analyse_anomaly_analysis_experiment()
