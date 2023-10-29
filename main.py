@@ -26,7 +26,7 @@ def launch_opendc_energy_experiment():
         if data is not None:
             print(f"Received reply against energy-experiment-related message = {data!r}")
             time.sleep(30) # for allowing the Telegraf agent to flush data to InfluxDB in sufficient time
-            # analyse_opendc_energy_experiment()
+            analyse_opendc_energy_experiment()
         else:
             print(f"No reply received against energy-experiment-related message!")
 
@@ -39,7 +39,7 @@ def launch_opendc_anomaly_experiment():
         if data is not None or data == '':
             print(f"Received reply against anomaly-experiment-related message = {data!r}")
             time.sleep(30)  # for allowing the Telegraf agent to flush data to InfluxDB in sufficient time
-            # analyse_opendc_anomaly_experiment()
+            analyse_opendc_anomaly_experiment()
         else:
             print(f"No reply received against anomaly-experiment-related message!")
 
